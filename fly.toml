@@ -1,4 +1,4 @@
-app = "my-app-bfryag" # Fly.io will replace this when you deploy
+app = "my-app" # Fly.io will replace this when you deploy
 
 [env]
 
