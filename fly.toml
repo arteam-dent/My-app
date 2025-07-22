@@ -1,0 +1,19 @@
+app = "Apexo" # Fly.io will replace this when you deploy
+
+[env]
+
+[mounts]
+  source = "pb_data"
+  destination = "/pb_data"
+
+[[services]]
+  internal_port = 8090
+  protocol = "tcp"
+
+  [[services.ports]]
+    handlers = ["http"]
+    port = 80
+
+  [[services.ports]]
+    handlers = ["tls", "http"]
+    port = 443
