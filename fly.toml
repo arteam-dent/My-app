@@ -1,19 +1,27 @@
-app = "my-app" # Fly.io will replace this when you deploy
+# fly.toml app configuration file generated for snowy-tree-8913 on 2023-07-28T20:49:19+03:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-[env]
+app = "snowy-tree-8913"
+primary_region = "ams"
 
 [mounts]
-  source = "pb_data"
-  destination = "/pb_data"
+  source = "pb_data" # name of the volume
+  destination = "/pb/pb_data"
 
-[[services]]
-  internal_port = 8090
-  protocol = "tcp"
+# optional if you want to change the PocketBase version
+[build.args]
+  PB_VERSION="0.25.8"
 
-  [[services.ports]]
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = false
+  auto_start_machines = true
+  min_machines_running = 1
+  processes = ["app"]
+  [http_service.concurrency]
+    type = "requests"
+    soft_limit = 500
+    hard_limit = 550
