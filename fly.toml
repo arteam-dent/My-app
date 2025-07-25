@@ -3,7 +3,7 @@
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = "snowy-tree-8913"
+app = "my-app-q0ik8q"
 primary_region = "ams"
 
 [mounts]
